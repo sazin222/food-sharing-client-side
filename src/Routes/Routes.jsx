@@ -7,6 +7,9 @@ import Home from "../Pages/Home/Home";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import AvailabeFood from "../Pages/AvailabeFood/AvailabeFood";
+import AddFood from "../Pages/AddFood/AddFood";
+import PrivetRoutes from "./PrivetRoutes";
 
 const Routes = createBrowserRouter([
     {
@@ -17,6 +20,16 @@ const Routes = createBrowserRouter([
         {
             path:'/',
             element: <Home></Home>
+        },
+        {
+           path:'/availableFoods',
+           element: <AvailabeFood></AvailabeFood>
+        },
+        {
+          path:'/addFood',
+          element: <PrivetRoutes>
+            <AddFood></AddFood>
+          </PrivetRoutes>
         },
         {
           path:'/login',

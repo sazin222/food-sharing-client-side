@@ -1,3 +1,4 @@
+import Footer from "../Footer/Footer";
 import Banner from "./Banner";
 import Navber from "./Navber";
 
@@ -7,6 +8,7 @@ const Home = () => {
         <div>
             <Navber></Navber>
             <Banner></Banner>
+            <Footer></Footer>
         </div>
     );
 };

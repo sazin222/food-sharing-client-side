@@ -3,6 +3,7 @@ import Navber from "../Home/Navber";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Footer from "../Footer/Footer";
 
 const Login = () => {
   const { Login, googleLogin } = useContext(AuthContext);
@@ -155,6 +156,7 @@ const Login = () => {
 
         <div className="hidden md:block md:absolute md:top-0 md:left-1/2 md:right-0 h-full bg-[url('https://i.ibb.co/DkT7xpk/4957136-4957136.jpg')] bg-no-repeat bg-center bg-cover"></div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };
