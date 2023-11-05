@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import logo from "../../../src/assets/image/logo.jpg-removebg-preview.png";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useContext } from "react";
+import Swal from "sweetalert2";
 import("preline");
 const Navber = () => {
   const { logOut, user } = useContext(AuthContext);
@@ -11,6 +12,19 @@ const Navber = () => {
     logOut()
       .then((result) => {
         console.log(result);
+        Swal.fire({
+          title: "Successfully Log out",
+          width: 600,
+          padding: "3em",
+          color: "#716add",
+          background: "#fff url(/images/trees.png)",
+          backdrop: `
+                  rgba(0,0,123,0.4)
+                  url("/images/nyan-cat.gif")
+                  left top
+                  no-repeat
+                `,
+        });
       })
       .catch((error) => {
         console.log(error);
