@@ -8,25 +8,28 @@ const Navber = () => {
      
      <NavLink className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "border-b-4 border-green-600 font-bold " : ""} to={"/"} >Home</NavLink>  
-      <NavLink to={"/available-foods"} className={({ isActive, isPending }) =>
+      <NavLink to={"/availableFoods"} className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "border-b-4 border-green-600 font-bold " : ""}>Available Foods</NavLink>
      <NavLink to={"/login"} className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "border-b-4 border-green-600 font-bold " : ""} >Log in</NavLink>
-     
+    isPending ? "pending" : isActive ? "border-b-4 border-green-600 font-bold " : ""} >Add Food</NavLink>
+     <NavLink to={"/addFood"} className={({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "border-b-4 border-green-600 font-bold " : ""} >Manage My Foods</NavLink>
+     <NavLink to={"/manageFood"} className={({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "border-b-4 border-green-600 font-bold " : ""} > My Food Request</NavLink>
      
     </>
 
 
   return (
-    <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 sm:py-0 dark:bg-gray-800 dark:border-gray-700">
+    <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-4 sm:py-0 dark:bg-gray-800 dark:border-gray-700">
       <nav
-        className="relative max-w-7xl w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
+        className="relative max-w-7xl w-full mx-auto px-5 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
        
         aria-label="Global"
       >
         <div className="flex items-center  justify-between">
        <div>
-       <img className="w-28" src={logo} alt="" />
+       <img className="w-28 lg:w-32" src={logo} alt="" />
        </div>
 
           <div className="sm:hidden">
@@ -61,14 +64,15 @@ const Navber = () => {
             </button>
           </div>
         </div>
-       <div className="">
+       <div className="mx-auto">
        <div
           id="navbar-collapse-with-animation"
           className="hs-collapse hidden overflow-hidden transition-all  duration-300 basis-full grow sm:block"
         >
           <div className="flex text-base flex-col gap-y-4 gap-x-0 mt-5 sm:flex-row sm:items-center sm:gap-y-0 sm:gap-x-7 sm:mt-0 sm:pl-7 justify-center sm:justify-start">
            {Navlinks}
-            <div className="flex items-center gap-x-2 sm:ml-auto">
+            
+           <div className="flex items-center gap-x-2 sm:ml-24">
               <a
                 className="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500"
                 href="#"
@@ -86,8 +90,8 @@ const Navber = () => {
                 Log in
               </a>
             </div>
-          
           </div>
+         
         </div>
        </div>
       </nav>
