@@ -21,7 +21,7 @@ const SingleFoodDetails = () => {
               <p>
                 {" "}
                 <span className="font-semibold mr-2">Donator Name :</span>
-                {SingleFood.donator?.donatorName}
+                {SingleFood.donatorName}
               </p>
               <p>
                 {" "}
@@ -65,9 +65,8 @@ const SingleFoodDetails = () => {
                   <div className="p-4 sm:p-7">
                     <div className="text-center">
                       <h2 className="block text-2xl font-bold text-gray-800 dark:text-gray-200">
-                       Request Form
+                        Request Form
                       </h2>
-                     
                     </div>
 
                     <div className="mt-5">
@@ -115,7 +114,7 @@ const SingleFoodDetails = () => {
                             type="submit"
                             className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
                           >
-                            Reset password
+                            Request Submit
                           </button>
                         </div>
                       </form>

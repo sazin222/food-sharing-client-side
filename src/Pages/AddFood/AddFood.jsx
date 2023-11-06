@@ -1,8 +1,61 @@
+import { useContext } from "react";
 import Footer from "../Footer/Footer";
 import Navber from "../Home/Navber";
+import { AuthContext } from "../../Provider/AuthProvider";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const AddFood = () => {
+    const {user}= useContext(AuthContext)
+    const axiosSecure= useAxiosSecure()
+  const handelAddFood= (e)=>{
+    e.preventDefault()
+    const form= e.target
+    const foodName= form.foodName.value
+    const foodImage=form.foodImage.value
+    const foodQuantity=parseInt(form.foodQuantity.value)
+    const pickupLocation=form.pickupLocation.value
+    const expireddate=form.expireddate.value
+    const additionalNotes=form.additionalNotes.value
+    const email= user?.email
+    const donatorName= user?.displayName
+    const donatorImage= user?.photoURL
+
+    const AddedFood = {
+      foodName,
+      foodImage,
+      foodQuantity,
+      pickupLocation,
+      additionalNotes,
+      expireddate,
+      email,
+      donatorName, 
+      donatorImage, 
+  };
+    
+  axiosSecure.post('/food',AddedFood )
+  .then(function (response) {
+    console.log(response);
+    if(response.data.insertedId){
+      Swal.fire({
+          title: 'Success',
+          text: 'Produced added successfully',
+          icon: 'Success',
+          confirmButtonText: 'Cool'
+        })
+
+        form.reset()
+  }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+  }
+  
+
+
     return (
         <div>
             <Navber></Navber>
@@ -19,30 +72,39 @@ const AddFood = () => {
         </h1>
       </div>
      
-      <form>
+      <form onSubmit={handelAddFood}>
         <div className="mx-auto max-w-2xl sm:grid grid-cols-3 sm:space-x-3 p-3 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-slate-900 dark:border-gray-700 dark:shadow-gray-900/[.2]">
           <div className="pb-2 sm:pb-0 sm:flex-[1_0_0%]">
-            <label htmlFor="hs-hero-name-1" className="block text-sm font-medium dark:text-white"><span className="sr-only">Your name</span></label>
-            <input type="text" id="hs-hero-name-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Your name"/>
+            <label htmlFor="hs-hero-name-1" className="block text-sm font-medium dark:text-white"><span className="sr-only"> Food Name</span></label>
+            <input type="text" name="foodName" id="hs-hero-name-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder=" Food Name"/>
           </div>
           <div className="pb-2 sm:pb-0 sm:flex-[1_0_0%]">
-            <label htmlFor="hs-hero-name-1" className="block text-sm font-medium dark:text-white"><span className="sr-only">Your name</span></label>
-            <input type="text" id="hs-hero-name-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Your name"/>
+            <label htmlFor="hs-hero-name-1" className="block text-sm font-medium dark:text-white"><span className="sr-only">Food Image</span></label>
+            <input type="text" name="foodImage" id="hs-hero-name-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Food Image Url"/>
           </div>
           <div className="pb-2 sm:pb-0 sm:flex-[1_0_0%]">
-            <label htmlFor="hs-hero-name-1" className="block text-sm font-medium dark:text-white"><span className="sr-only">Your name</span></label>
-            <input type="text" id="hs-hero-name-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Your name"/>
+            <label htmlFor="hs-hero-name-1" className="block text-sm font-medium dark:text-white"><span className="sr-only">Food Quantity</span></label>
+            <input  min="1" type="number" name="foodQuantity" id="hs-hero-name-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Food Quantity"/>
           </div>
           <div className="pt-2 sm:pt-0 sm:pl-3 border-t border-gray-200 sm:border-t-0 sm:border-l sm:flex-[1_0_0%] dark:border-gray-700">
-            <label htmlFor="hs-hero-email-1" className="block text-sm font-medium dark:text-white"><span className="sr-only">Your email address</span></label>
-            <input type="email" id="hs-hero-email-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Your name"/>
+            <label htmlFor="hs-hero-email-1" className="block text-sm font-medium dark:text-white"><span className="sr-only">Pickup Location</span></label>
+            <input type="text" name="pickupLocation" id="hs-hero-email-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Pickup Location"/>
           </div>
-          <div className="pt-2 sm:pt-0 grid sm:block sm:flex-[0_0_auto]">
-            <a className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm sm:p-4 dark:focus:ring-offset-gray-800" href="#">
-              Get started
-            </a>
+          <div className="pt-2 sm:pt-0 sm:pl-3 border-t border-gray-200 sm:border-t-0 sm:border-l sm:flex-[1_0_0%] dark:border-gray-700">
+            <label htmlFor="hs-hero-email-1" className="block text-sm font-medium dark:text-white"><span className="sr-only">Expired Date</span></label>
+            <input type="date" name="expireddate" id="hs-hero-email-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Expired Date"/>
           </div>
+          <div className="pt-2 sm:pt-0 sm:pl-3 border-t border-gray-200 sm:border-t-0 sm:border-l sm:flex-[1_0_0%] dark:border-gray-700">
+            <label htmlFor="hs-hero-email-1" className="block text-sm font-medium dark:text-white"><span className="sr-only">Additional Notes</span></label>
+            <input type="text" name="additionalNotes" id="hs-hero-email-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Additional Notes"/>
+          </div>
+         
         </div>
+         <div className="text-center">
+         <button type="submit" className=" text-center mx-auto py-3 px-4 flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-white bg-green-500 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+           Add Product
+        </button>
+         </div>
       </form>
      
       <div className="hidden absolute top-2/4 left-0 transform -translate-y-2/4 -translate-x-40 md:block lg:-translate-x-80" aria-hidden="true">

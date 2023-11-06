@@ -17,9 +17,9 @@ const ShortFoodCard = ({food}) => {
    
     <div className="flex-shrink-0 group block my-3">
   <div className="flex items-center">
-    <img className="inline-block flex-shrink-0 h-[3.875rem] w-[3.875rem] rounded-full" src={food.donator?.donatorImage} />
+    <img className="inline-block flex-shrink-0 h-[3.875rem] w-[3.875rem] rounded-full" src={food.donatorImage} />
     <div className="ml-3">
-      <h3 className="font-semibold text-gray-800 dark:text-white">{food.donator?.donatorName}</h3>
+      <h3 className="font-semibold text-gray-800 dark:text-white">{food.donatorName}</h3>
     </div>
   </div>
 </div>
@@ -35,7 +35,7 @@ const ShortFoodCard = ({food}) => {
 
     <p><span className="font-semibold mr-1">
 expired Date:
-</span> {food.expireddate} December</p>
+</span> {food.expireddate} </p>
 
    </div>
 

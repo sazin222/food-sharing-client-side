@@ -1,0 +1,133 @@
+[
+    {
+      "_id": "6547b3745467e0fbc0b9be2b",
+      "id": 1,
+      "foodImage": "https://i.ibb.co/hsGHpMK/aaron-blanco-tejedor-CNp-YALGZh-Mo-unsplash.j…",
+      "foodName": "Fresh Apples",
+      "donator": {
+        "foodQuantity": 10,
+        "pickupLocation": "123 Main Street, Cityville",
+        "expireddate": 16,
+        "additionalNotes": "These are delicious organic apples picked from our orchard. Please pic…"
+      },
+      "foodStatus": "available"
+    },
+    {
+      "_id": "6547b3745467e0fbc0b9be2c",
+      "id": 2,
+      "foodImage": "https://i.ibb.co/tbCpzff/anshu-a-Df-OSCJcmv-EU-unsplash.jpg",
+      "foodName": "Canned Soup",
+      "donator": {
+        "foodQuantity": 20,
+        "pickupLocation": "456 Oak Avenue, Townsville",
+        "expireddate": 10,
+        "additionalNotes": "We have an assortment of canned soups, perfect for a quick and hearty …"
+      },
+      "foodStatus": "available"
+    },
+    {
+      "_id": "6547b3745467e0fbc0b9be2d",
+      "id": 3,
+      "foodImage": "https://i.ibb.co/ZxXvKGQ/rebecca-matthews-yj-WNJRwt8mc-unsplash.jpg",
+      "foodName": "Homemade Bread",
+      "donator": {
+        "foodQuantity": 5,
+        "pickupLocation": "789 Pine Road, Villagetown",
+        "expireddate": 1,
+        "additionalNotes": "Enjoy the aroma of freshly baked whole wheat bread. It's perfect for b…"
+      },
+      "foodStatus": "available"
+    },
+    {
+      "_id": "6547b3745467e0fbc0b9be2e",
+      "id": 4,
+      "foodImage": "https://i.ibb.co/SyyLfH9/ke-vin-sz-QFi-GZH8w-U-unsplash.jpg",
+      "foodName": "Rice and Beans",
+      "donator": {
+        "foodQuantity": 5,
+        "pickupLocation": "101 Elm Street, Hamletville",
+        "expireddate": 3,
+        "additionalNotes": "This is a delicious vegetarian meal with a blend of rice and beans. It…"
+      },
+      "foodStatus": "available"
+    },
+    {
+      "_id": "6547b3745467e0fbc0b9be2f",
+      "id": 5,
+      "foodImage": "https://i.ibb.co/RhQpjRd/tania-melnyczuk-xe-Tv9-N2-Fj-XA-unsplash.jpg",
+      "foodName": "Fresh Salad",
+      "donator": {
+        "foodQuantity": 8,
+        "pickupLocation": "222 Birch Lane, Countryside",
+        "expireddate": 1,
+        "additionalNotes": "This fresh salad includes lettuce, cherry tomatoes, and a light vinaig…"
+      },
+      "foodStatus": "available"
+    },
+    {
+      "_id": "6547b3745467e0fbc0b9be30",
+      "id": 6,
+      "foodImage": "https://i.ibb.co/HX6jGNv/jorge-zapata-4n-Xkh-LCrk-Lo-unsplash.jpg",
+      "foodName": "Pasta and Sauce",
+      "donator": {
+        "foodQuantity": 4,
+        "pickupLocation": "333 Cedar Street, Suburbia",
+        "expireddate": 6,
+        "additionalNotes": "Indulge in a classic spaghetti and marinara sauce. It's a comforting a…"
+      },
+      "foodStatus": "available"
+    },
+    {
+      "_id": "6547b3745467e0fbc0b9be31",
+      "id": 7,
+      "foodImage": "https://i.ibb.co/hFPZDVn/erol-ahmed-46-Sg95vw-Wd-M-unsplash.jpg",
+      "foodName": "Fresh Oranges",
+      "donator": {
+        "foodQuantity": 15,
+        "pickupLocation": "444 Maple Drive, Neighbortown",
+        "expireddate": 7,
+        "additionalNotes": "These sweet and juicy oranges are perfect for snacking or making fresh…"
+      },
+      "foodStatus": "available"
+    },
+    {
+      "_id": "6547b3745467e0fbc0b9be32",
+      "id": 8,
+      "foodImage": "https://i.ibb.co/jTKSHQ2/sharon-pittaway-KUZnfk-2-DSQ-unsplash.jpg",
+      "foodName": "Vegetable ",
+      "donator": {
+        "foodQuantity": 3,
+        "pickupLocation": "555 Pineapple Lane, Suburbville",
+        "expireddate": 8,
+        "additionalNotes": "This vegetable stir-fry is a colorful and flavorful dish with mixed ve…"
+      },
+      "foodStatus": "available"
+    },
+    {
+      "_id": "6547b3745467e0fbc0b9be33",
+      "id": 9,
+      "foodImage": "https://i.ibb.co/dJ52qrG/christina-branco-7-P-wc2-Z2-Ujs-unsplash.jpg",
+      "foodName": "Cookies",
+      "donator": {
+        "foodQuantity": 8,
+        "pickupLocation": "666 Cherry Road, Neighborville",
+        "expireddate": 11,
+        "additionalNotes": "Indulge in a sweet treat with fresh milk and delicious homemade cookie…"
+      },
+      "foodStatus": "available"
+    },
+    {
+      "_id": "6547b3745467e0fbc0b9be34",
+      "id": 10,
+      "foodImage": "https://i.ibb.co/RNnHbNW/jametlene-reskp-1ly1n-Peo-Jk-unsplash.jpg",
+      "foodName": "Vegetable Soup",
+      "donator": {
+        "foodQuantity": 10,
+        "pickupLocation": "777 Strawberry Street, Villageville",
+        "expireddate": 15,
+        "additionalNotes": "This vegetable soup is a hearty and nutritious option, filled with a m…"
+      },
+      "foodStatus": "available"
+    }
+  ]
+  
