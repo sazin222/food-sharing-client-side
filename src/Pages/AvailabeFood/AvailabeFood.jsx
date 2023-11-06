@@ -12,6 +12,7 @@ const AvailabeFood = () => {
     const [foods, setFoods]= useState([])
     const axiosSecure= useAxiosSecure()
     const [foodname, setFoodName]=useState('')
+    const [asct, setexprriedDate]=useState('')
     const handelSearch= e=>{
       e.preventDefault()
       const form = e.target
@@ -20,8 +21,8 @@ const AvailabeFood = () => {
       console.log(searchItem);
       
     }
-    console.log(foodname);
-    const URL = `/foods?foodName=${foodname}`;
+   
+    const URL = `/foods?foodName=${foodname}&sortField=expireddate&sortOrder=${asct}`;
     useEffect(() => {
       axiosSecure.get(URL)
       .then(res=>{
@@ -79,9 +80,14 @@ const AvailabeFood = () => {
       </div>
     </div>
   </div>
-</div>
+</div> 
+        {/* Short button star */}
+      
+         <div className="text-center"><button   onClick={()=>setexprriedDate('asc') }type="button" className="py-3 text-center px-4 inline-flex justify-center items-center gap-2 rounded-md bg-green-600 border border-transparent font-semibold text-white hover:text-white hover:bg-green-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-green-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+        Short By Date
+       </button></div>
 
-           
+         {/* short button finishrd */}
            <h1 className="text-center text-3xl lg:text-4xl font-bold mt-6"  style={{backgroundClip:'text',  WebkitTextFillColor: 'transparent',  background: 'linear-gradient(to right, #90EE90, #056608)',WebkitBackgroundClip:'text',  }}>Discover Available Food Options
            </h1>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 my-4 lg:my-10 ">
