@@ -3,6 +3,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Navber from "../Home/Navber";
 import FoodCard from "./FoodCard";
 import Footer from "../Footer/Footer";
+import Search from "./Search";
 
 
 const AvailabeFood = () => {
@@ -19,10 +20,10 @@ const AvailabeFood = () => {
     return (
         <div>
            <Navber></Navber>
-           <h1 className="text-center text-3xl lg:text-4xl font-bold my-5 lg:my-10"  style={{backgroundClip:'text',  WebkitTextFillColor: 'transparent',  background: 'linear-gradient(to right, #90EE90, #056608)',WebkitBackgroundClip:'text',  }}>Discover Available Food Options
-           </h1>
-           <div className="border-2 border-green-600 w-48 lg:w-60 mx-auto border-double"></div>
           
+           <Search></Search>
+           <h1 className="text-center text-3xl lg:text-4xl font-bold mt-6"  style={{backgroundClip:'text',  WebkitTextFillColor: 'transparent',  background: 'linear-gradient(to right, #90EE90, #056608)',WebkitBackgroundClip:'text',  }}>Discover Available Food Options
+           </h1>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 my-4 lg:my-10 ">
           {
             foods.map(food=><FoodCard key={food._id} food={food}></FoodCard>)
