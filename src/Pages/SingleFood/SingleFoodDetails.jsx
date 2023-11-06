@@ -65,17 +65,9 @@ const SingleFoodDetails = () => {
                   <div className="p-4 sm:p-7">
                     <div className="text-center">
                       <h2 className="block text-2xl font-bold text-gray-800 dark:text-gray-200">
-                        Forgot password?
+                       Request Form
                       </h2>
-                      <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                        Remember your password?
-                        <a
-                          className="text-blue-600 decoration-2 hover:underline font-medium"
-                          href="../examples/html/modal-signin.html"
-                        >
-                          Sign in here
-                        </a>
-                      </p>
+                     
                     </div>
 
                     <div className="mt-5">
@@ -133,7 +125,7 @@ const SingleFoodDetails = () => {
               </div>
             </div>
 
-            {/* here wiil be finished */}
+            {/* modal finished */}
           </div>
 
           <div className="relative ml-4">
