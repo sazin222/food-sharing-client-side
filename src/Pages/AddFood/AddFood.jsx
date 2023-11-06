@@ -40,7 +40,7 @@ const AddFood = () => {
     if(response.data.insertedId){
       Swal.fire({
           title: 'Success',
-          text: 'Produced added successfully',
+          text: 'Food added successfully',
           icon: 'Success',
           confirmButtonText: 'Cool'
         })
