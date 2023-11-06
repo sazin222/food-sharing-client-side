@@ -37,7 +37,7 @@ const AvailabeFood = () => {
         <div>
            <Navber></Navber>
             
-           <div className="relative overflow-hidden">
+     <div className="relative overflow-hidden">
   <div className="max-w-[85rem] mx-auto px-4 sm:px-3 lg:px-8 py-5 sm:py-10">
     <div className="text-center">
       <h1 className="text-4xl sm:text-6xl font-bold text-gray-800 dark:text-gray-200">
@@ -80,7 +80,7 @@ const AvailabeFood = () => {
       </div>
     </div>
   </div>
-</div> 
+  </div> 
         {/* Short button star */}
       
          <div className="text-center"><button   onClick={()=>setexprriedDate('asc') }type="button" className="py-3 text-center px-4 inline-flex justify-center items-center gap-2 rounded-md bg-green-600 border border-transparent font-semibold text-white hover:text-white hover:bg-green-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-green-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
