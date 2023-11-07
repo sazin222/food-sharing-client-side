@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Navber from "../Home/Navber";
-import { AuthContext } from "../../Provider/AuthProvider";
 import ManageTable from "./ManageTable";
 import Footer from "../Footer/Footer";
+import useAuth from "../../hooks/useAuth";
 
 const ManageFood = () => {
-  const {user} = useContext(AuthContext)
+  const {user} = useAuth()
     const [foods, setFoods]= useState([])
     console.log(foods);
     const axiosSecure= useAxiosSecure()
