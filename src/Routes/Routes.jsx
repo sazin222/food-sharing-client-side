@@ -13,6 +13,7 @@ import PrivetRoutes from "./PrivetRoutes";
 import SingleFoodDetails from "../Pages/SingleFood/SingleFoodDetails";
 import ManageFood from "../Pages/ManageFood/ManageFood";
 import MyfoodRequest from "../Pages/MyfoodRequest/MyfoodRequest";
+import ManageFoodUpdate from "../Pages/ManageFood/ManageFoodUpdate";
 
 const Routes = createBrowserRouter([
     {
@@ -47,6 +48,14 @@ const Routes = createBrowserRouter([
           element: <PrivetRoutes>
             <ManageFood></ManageFood>
           </PrivetRoutes>
+        },
+        {
+          path:'/manageFoodUpate/:id',
+          element: <PrivetRoutes>
+            <ManageFoodUpdate></ManageFoodUpdate>
+          </PrivetRoutes>,
+           loader:({params})=> fetch(`http://localhost:5000/fooddetails/${params.id}`)
+          
         },
         {
           path:'/foodRequest',

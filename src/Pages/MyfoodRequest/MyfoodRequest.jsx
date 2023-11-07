@@ -21,7 +21,8 @@ const MyfoodRequest = () => {
 
     }, [URL,axiosSecure]);
 
-    return (
+    if(foods.length>0){
+      return (
         <div>
            <Navber></Navber>
             <div className="text-center my-8">
@@ -43,6 +44,21 @@ const MyfoodRequest = () => {
           <Footer></Footer>
         </div>
     );
+    } else{
+      return (
+        <div>
+       <Navber></Navber>
+          <div className="text-center h-full font-bold my-3 text-green-500 text-3xl"> 
+             <h1>There is no request food</h1>
+         </div>
+         
+        <div className="mt-5 lg:mt-28">
+        <Footer></Footer>
+        </div>
+         
+        </div>
+     )
+    }
 };
 
 export default MyfoodRequest;

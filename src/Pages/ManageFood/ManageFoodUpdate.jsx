@@ -1,15 +1,14 @@
-
-import Footer from "../Footer/Footer";
+import { useLoaderData } from "react-router-dom";
 import Navber from "../Home/Navber";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Footer from "../Footer/Footer";
 import Swal from "sweetalert2";
-import useAuth from "../../hooks/useAuth";
 
 
-const AddFood = () => {
-    const {user}= useAuth()
-    const axiosSecure= useAxiosSecure()
-  const handelAddFood= (e)=>{
+const ManageFoodUpdate = () => {
+    const oldfood= useLoaderData()
+    console.log(oldfood);
+    const {foodName,foodImage,foodQuantity, pickupLocation,expireddate,additionalNotes, _id}= oldfood
+  const handelUpdate= (e)=>{
     e.preventDefault()
     const form= e.target
     const foodName= form.foodName.value
@@ -18,9 +17,7 @@ const AddFood = () => {
     const pickupLocation=form.pickupLocation.value
     const expireddate=form.expireddate.value
     const additionalNotes=form.additionalNotes.value
-    const email= user?.email
-    const donatorName= user?.displayName
-    const donatorImage= user?.photoURL
+   
 
     const AddedFood = {
       foodName,
@@ -29,80 +26,82 @@ const AddFood = () => {
       pickupLocation,
       additionalNotes,
       expireddate,
-      email,
-      donatorName, 
-      donatorImage, 
+     
   };
+    console.log(AddedFood);
+
     
-  axiosSecure.post('/food',AddedFood )
-  .then(function (response) {
-    console.log(response);
-    if(response.data.insertedId){
-      Swal.fire({
-          title: 'Success',
-          text: 'Food added successfully',
-          icon: 'Success',
-          confirmButtonText: 'Cool'
-        })
+    fetch(`http://localhost:5000/foodUpdate/${_id}`,{
 
-        form.reset()
-  }
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+    method: 'PUT',
+    headers:{
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(AddedFood)
+
+})
+.then(res=>res.json())
+.then(data=>{
+    console.log(data);
+    if(data.modifiedCount>0){
+        Swal.fire({
+            title: 'Success',
+            text: 'Food updated successfully',
+            icon: 'Success',
+            confirmButtonText: 'Cool'
+          })
+    }
+})
 
   }
-  
+
 
 
     return (
         <div>
             <Navber></Navber>
-            <div>
+           <div>
 <div className="overflow-hidden">
   <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <div className="relative mx-auto max-w-4xl grid space-y-5 sm:space-y-10">
       <div className="text-center">
         <p className="text-xl font-semibold text-gray-500 tracking-wide uppercase mb-3 dark:text-gray-200">
-         Add Your Food
+        Update Your Food
         </p>
-        <h1 className="text-3xl text-gray-800 font-bold sm:text-3xl lg:text-5xl lg:leading-tight dark:text-gray-200">
-        Contribute Food to the Community <span className="text-green-500"> Share Your Surplus with Those in Need</span>
-        </h1>
+        
       </div>
      
-      <form onSubmit={handelAddFood}>
-        <div className="mx-auto max-w-2xl sm:grid grid-cols-3 sm:space-x-3 p-3 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-slate-900 dark:border-gray-700 dark:shadow-gray-900/[.2]">
-          <div className="pb-2 sm:pb-4 sm:flex-[1_0_0%]">
+      <form onSubmit={handelUpdate}>
+        <div className="mx-auto max-w-2xl sm:grid grid-cols-3 sm:space-x-3 p-4 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-slate-900 dark:border-gray-700 dark:shadow-gray-900/[.2]">
+          <div className="pb-2 sm:pb-3 sm:flex-[1_0_0%]">
             <label htmlFor="hs-hero-name-1" className="block text-sm font-medium dark:text-white"><span className="sr-only"> Food Name</span></label>
-            <input type="text" name="foodName" id="hs-hero-name-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder=" Food Name"/>
+            <input  type="text" defaultValue={foodName} name="foodName" id="hs-hero-name-1" className="py-3 outline px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder=" Food Name"/>
           </div>
           <div className="pb-2 sm:pb-0 sm:flex-[1_0_0%]">
             <label htmlFor="hs-hero-name-1" className="block text-sm font-medium dark:text-white"><span className="sr-only">Food Image</span></label>
-            <input type="text" name="foodImage" id="hs-hero-name-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Food Image Url"/>
+            <input type="text" defaultValue={foodImage} name="foodImage" id="hs-hero-name-1" className="py-3 outline px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Food Image Url"/>
           </div>
           <div className="pb-2 sm:pb-0 sm:flex-[1_0_0%]">
             <label htmlFor="hs-hero-name-1" className="block text-sm font-medium dark:text-white"><span className="sr-only">Food Quantity</span></label>
-            <input  min="1" type="number" name="foodQuantity" id="hs-hero-name-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Food Quantity"/>
+            <input  min="1" type="number" defaultValue={foodQuantity} name="foodQuantity" id="hs-hero-name-1" className="py-3 outline px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Food Quantity"/>
           </div>
           <div className="pt-2 sm:pt-0 sm:pl-3 border-t border-gray-200 sm:border-t-0 sm:border-l sm:flex-[1_0_0%] dark:border-gray-700">
             <label htmlFor="hs-hero-email-1" className="block text-sm font-medium dark:text-white"><span className="sr-only">Pickup Location</span></label>
-            <input type="text" name="pickupLocation" id="hs-hero-email-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Pickup Location"/>
+            <input type="text" defaultValue={pickupLocation} name="pickupLocation" id="hs-hero-email-1" className="py-3 outline px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Pickup Location"/>
           </div>
           <div className="pt-2 sm:pt-0 sm:pl-3 border-t border-gray-200 sm:border-t-0 sm:border-l sm:flex-[1_0_0%] dark:border-gray-700">
             <label htmlFor="hs-hero-email-1" className="block text-sm font-medium dark:text-white"><span className="sr-only">Expired Date</span></label>
-            <input type="date" name="expireddate" id="hs-hero-email-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Expired Date"/>
+            <input type="date" defaultValue={expireddate} name="expireddate" id="hs-hero-email-1" className="py-3 outline px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Expired Date"/>
           </div>
           <div className="pt-2 sm:pt-0 sm:pl-3 border-t border-gray-200 sm:border-t-0 sm:border-l sm:flex-[1_0_0%] dark:border-gray-700">
             <label htmlFor="hs-hero-email-1" className="block text-sm font-medium dark:text-white"><span className="sr-only">Additional Notes</span></label>
-            <input type="text" name="additionalNotes" id="hs-hero-email-1" className="py-3 px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Additional Notes"/>
+            <input type="text" defaultValue={additionalNotes} name="additionalNotes" id="hs-hero-email-1" className="py-3 outline px-4 block w-full border-transparent rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4 dark:bg-slate-900 dark:border-transparent dark:text-gray-400" placeholder="Additional Notes"/>
           </div>
          
         </div>
          <div className="text-center">
          <button type="submit" className=" text-center mx-auto py-3 px-4 flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-white bg-green-500 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
-           Add Product
+           Update Food
         </button>
          </div>
       </form>
@@ -125,10 +124,10 @@ const AddFood = () => {
     </div>
   </div>
 </div>
-            </div>
+            </div> 
             <Footer></Footer>
         </div>
     );
 };
 
-export default AddFood;
+export default ManageFoodUpdate;
