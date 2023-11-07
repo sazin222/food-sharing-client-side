@@ -1,11 +1,10 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../../src/assets/image/logo.jpg-removebg-preview.png";
-import { AuthContext } from "../../Provider/AuthProvider";
-import { useContext } from "react";
 import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
 import("preline");
 const Navber = () => {
-  const { logOut, user } = useContext(AuthContext);
+  const { logOut, user } = useAuth()
 
   const handelSingout = (e) => {
     e.preventDefault();

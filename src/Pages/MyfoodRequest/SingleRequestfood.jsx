@@ -26,8 +26,8 @@ const SingleRequestfood = ({food , foods , setFoods}) => {
              console.log(data);
              if(data.deletedCount>0){
                     Swal.fire(
-             'Deleted!',
-             'Your Product has been deleted.',
+             'Canceled!',
+             'Your Request has been canceled.',
              'success'
            )      
     

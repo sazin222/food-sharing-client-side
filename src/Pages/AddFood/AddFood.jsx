@@ -1,13 +1,13 @@
-import { useContext } from "react";
+
 import Footer from "../Footer/Footer";
 import Navber from "../Home/Navber";
-import { AuthContext } from "../../Provider/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
 
 
 const AddFood = () => {
-    const {user}= useContext(AuthContext)
+    const {user}= useAuth()
     const axiosSecure= useAxiosSecure()
   const handelAddFood= (e)=>{
     e.preventDefault()
