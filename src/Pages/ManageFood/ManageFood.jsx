@@ -76,6 +76,8 @@ const ManageFood = () => {
               foods.map(item=> <ManageTable 
                key={item._id}
                item={item}
+               foods={foods}
+               setFoods={setFoods}
               >
 
               </ManageTable>)

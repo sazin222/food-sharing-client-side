@@ -17,7 +17,7 @@ const ShortFood = () => {
     }, [URL,axiosSecure]);
 
     return (
-        <div>
+        <div className="px-3">
           <div className="text-center">
           <h1 className="text-center text-3xl lg:text-5xl font-bold mt-6"  style={{backgroundClip:'text',  WebkitTextFillColor: 'transparent',  background: 'linear-gradient(to right, #90EE90, #056608)',WebkitBackgroundClip:'text',  }}>Featured Foods
            </h1>
