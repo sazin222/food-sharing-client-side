@@ -1,10 +1,74 @@
-import { useLoaderData } from "react-router-dom";
+import {  useLoaderData } from "react-router-dom";
 import Navber from "../Home/Navber";
 import Footer from "../Footer/Footer";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const SingleFoodDetails = () => {
+  const axiosSecure= useAxiosSecure()
+  const [currentDate, setCurrentDate] = useState(
+    new Date().toISOString().substr(0, 10)
+  );
+  const { user } = useContext(AuthContext);
   const SingleFood = useLoaderData();
-  console.log(SingleFood);
+
+  const handelRequest= (e)=>{
+    e.preventDefault()
+    const form= e.target
+    const foodName= form.foodName.value 
+    const foodImage=form.foodImage.value 
+    const foodId= form.foodId.value
+    const donatorEmail= form.donatorEmail.value
+    const donatorName= form.donatorName.value 
+    const email= form.email.value 
+    const requestDate= form.requestDate.value 
+    const pickupLocation=form.pickupLocation.value 
+    const expireddate=form.expireddate.value
+    const additionalNotes=form.additionalNotes.value 
+    const donationMoney= form.donationMoney.value 
+
+    const requestFood = {
+      foodName,
+      foodImage,
+      foodId,
+      donatorEmail,
+      donatorName,
+      email,
+      requestDate,
+      pickupLocation,
+      expireddate,
+      additionalNotes,
+      donationMoney
+  };
+   
+
+  axiosSecure.post('/foodRequest',requestFood )
+  .then(function (response) {
+    console.log(response);
+    if(response.data.insertedId){
+      Swal.fire({
+          title: 'Success',
+          text: 'Request Submitted',
+          icon: 'Success',
+          confirmButtonText: 'Cool'
+        })
+
+        form.reset()
+  }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+  
+  
+
+
+
+
+  }
 
   return (
     <div>
@@ -41,7 +105,7 @@ const SingleFoodDetails = () => {
               <p>
                 {" "}
                 <span className="font-semibold mr-2">Expired Date:</span>
-                {SingleFood.expireddate} December
+                {SingleFood.expireddate}
               </p>
             </div>
             {/* modal button */}
@@ -69,25 +133,199 @@ const SingleFoodDetails = () => {
                       </h2>
                     </div>
 
-                    <div className="mt-5">
-                      <form>
-                        <div className="grid gap-y-4">
+                    <div className="mt-5 grid ">
+                      <form onSubmit={handelRequest}>
+                        <div className="grid  gap-y-4">
                           <div>
-                            <label
-                              htmlFor="email"
+                             <label
+                              htmlFor="foodName"
                               className="block text-sm mb-2 dark:text-white"
                             >
-                              Email address
+                              Food Name
                             </label>
-                            <div className="relative">
+                            <div className="relative ">
+                              <input
+                                type="text"
+                                
+                                name="foodName"
+                                defaultValue={SingleFood.foodName}
+                                disabled
+                                className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
+                                outline
+                                "
+                                required
+                              /> 
+                              <label
+                                htmlFor="foodName"
+                                className="block text-sm mb-2 dark:text-white"
+                              >
+                                Food Image
+                              </label>
+                              <input
+                                type="text"
+                               
+                                name="foodImage"
+                                defaultValue={SingleFood.foodImage}
+                                disabled
+                                className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
+                                outline
+                                "
+                                required
+                              />
+                              <label
+                                htmlFor="foodName"
+                                className="block text-sm mb-2 dark:text-white"
+                              >
+                                Food Id
+                              </label>
+                              <input
+                                type="text"
+                                
+                                name="foodId"
+                                defaultValue={SingleFood._id}
+                                disabled
+                                className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
+                                outline
+                                "
+                                required
+                              />
+                              <label
+                                htmlFor="foodName"
+                                className="block text-sm mb-2 dark:text-white"
+                              >
+                                Donator email
+                              </label>
                               <input
                                 type="email"
-                                id="email"
-                                name="email"
-                                className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                                
+                                name="donatorEmail"
+                                defaultValue={SingleFood.email}
+                                disabled
+                                className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
+                                outline
+                                "
                                 required
-                                aria-describedby="email-error"
                               />
+                              <label
+                                htmlFor="foodName"
+                                className="block text-sm mb-2 dark:text-white"
+                              >
+                                Donator Name
+                              </label>
+                              <input
+                                type="text"
+                               
+                                name="donatorName"
+                                defaultValue={SingleFood.donatorName}
+                                disabled
+                                className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
+                                outline
+                                "
+                                required
+                              />
+                              <label
+                                htmlFor="foodName"
+                                className="block text-sm mb-2 dark:text-white"
+                              >
+                                User Email
+                              </label>
+                              <input
+                                type="email"
+                                
+                                name="email"
+                                defaultValue={user?.email}
+                                disabled
+                                className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
+                                outline
+                                "
+                                required
+                              />
+                              <label
+                                htmlFor="foodName"
+                                className="block text-sm mb-2 dark:text-white"
+                              >
+                                Request Date
+                              </label>
+                              <input
+                                type="date"
+                                
+                                name="requestDate"
+                                value={currentDate}
+                                onChange={(e) => setCurrentDate(e.target.value)}
+                                disabled
+                                className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
+                                outline
+                                "
+                                required
+                              />
+                              <label
+                                htmlFor="foodName"
+                                className="block text-sm mb-2 dark:text-white"
+                              >
+                                Pickup Location
+                              </label>
+                              <input
+                                type="text"
+                               
+                                name="pickupLocation"
+                                defaultValue={SingleFood.pickupLocation}
+                                disabled
+                                className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
+                                outline
+                                "
+                                required
+                              />
+                              <label
+                                htmlFor="foodName"
+                                className="block text-sm mb-2 dark:text-white"
+                              >
+                                Expire Date
+                              </label>
+                              <input
+                                type="text"
+                                
+                                name="expireddate"
+                                defaultValue={SingleFood.expireddate}
+                                disabled
+                                className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
+                                outline
+                                "
+                                required
+                              />
+                              <label
+                                htmlFor="foodName"
+                                className="block text-sm mb-2 dark:text-white"
+                              >
+                               Additional Notes
+                              </label>
+                              <input
+                                type="text"
+                              
+                                name="additionalNotes"
+                                defaultValue={SingleFood.
+                                  additionalNotes}
+                                className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
+                                outline
+                                "
+                                required
+                              />
+                              <label
+                                htmlFor="foodName"
+                                className="block text-sm mb-2 dark:text-white"
+                              >
+                                Donation Money
+                              </label>
+                              <input
+                                type="text"
+                                
+                                name="donationMoney"
+                                className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
+                                outline
+                                "
+                                required
+                              /> 
+
+                         
                               <div className="hidden absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3">
                                 <svg
                                   className="h-5 w-5 text-red-500"
@@ -101,23 +339,17 @@ const SingleFoodDetails = () => {
                                 </svg>
                               </div>
                             </div>
-                            <p
-                              className="hidden text-xs text-red-600 mt-2"
-                              id="email-error"
-                            >
-                              Please include a valid email address so we can get
-                              back to you
-                            </p>
                           </div>
 
-                          <button
+                           <button
+                            
                             type="submit"
-                            className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                            className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
                           >
                             Request Submit
                           </button>
                         </div>
-                      </form>
+                       </form>
                     </div>
                   </div>
                 </div>
