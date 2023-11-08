@@ -18,7 +18,7 @@ const ManageTable = ({item , foods, setFoods}) => {
    }).then((result) => {
      if (result.isConfirmed) {
     
-      fetch(`http://localhost:5000/foodDelete/${id}`,{
+      fetch(`https://community-food-sharing-server-ten.vercel.app/foodDelete/${id}`,{
          method: 'DELETE'
       })
       .then(res=> res.json())

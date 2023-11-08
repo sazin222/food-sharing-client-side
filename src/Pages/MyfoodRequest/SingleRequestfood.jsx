@@ -18,7 +18,7 @@ const SingleRequestfood = ({food , foods , setFoods}) => {
        }).then((result) => {
          if (result.isConfirmed) {
         
-          fetch(`http://localhost:5000/foodRequests/${id}`,{
+          fetch(`https://community-food-sharing-server-ten.vercel.app/foodRequests/${id}`,{
              method: 'DELETE'
           })
           .then(res=> res.json())

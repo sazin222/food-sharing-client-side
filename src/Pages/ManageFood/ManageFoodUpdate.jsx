@@ -31,7 +31,7 @@ const ManageFoodUpdate = () => {
     console.log(AddedFood);
 
     
-    fetch(`http://localhost:5000/foodUpdate/${_id}`,{
+    fetch(`https://community-food-sharing-server-ten.vercel.app/foodUpdate/${_id}`,{
 
     method: 'PUT',
     headers:{

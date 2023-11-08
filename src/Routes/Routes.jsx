@@ -35,7 +35,7 @@ const Routes = createBrowserRouter([
           element : <PrivetRoutes>
             <SingleFoodDetails></SingleFoodDetails>
           </PrivetRoutes>,
-           loader:({params})=> fetch(`http://localhost:5000/fooddetails/${params.id}`,{credentials:'include'}) 
+           loader:({params})=> fetch(`https://community-food-sharing-server-ten.vercel.app/fooddetails/${params.id}`,{credentials:'include'}) 
         },
         {
           path:'/addFood',
@@ -54,7 +54,7 @@ const Routes = createBrowserRouter([
           element: <PrivetRoutes>
             <ManageFoodUpdate></ManageFoodUpdate>
           </PrivetRoutes>,
-           loader:({params})=> fetch(`http://localhost:5000/fooddetails/${params.id}`)
+           loader:({params})=> fetch(`https://community-food-sharing-server-ten.vercel.app/fooddetails/${params.id}`)
           
         },
         {
@@ -63,7 +63,7 @@ const Routes = createBrowserRouter([
             <ManageSingleFood>
             </ManageSingleFood>
           </PrivetRoutes>,
-          // loader:({params})=> fetch(`http://localhost:5000/manageSingleFood/${params.email}`)
+          
         },
         {
           path:'/foodRequest',

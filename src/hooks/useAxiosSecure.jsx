@@ -2,7 +2,7 @@ import axios from "axios";
 
  
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://community-food-sharing-server-ten.vercel.app/',
     withCredentials: true ,
     
 })
