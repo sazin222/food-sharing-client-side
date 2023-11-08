@@ -3,6 +3,7 @@ import Navber from "../Home/Navber";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useContext } from "react";
+import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
@@ -55,6 +56,9 @@ const Register = () => {
 
     return (
         <div>
+          <Helmet>
+            <title>Register page</title>
+          </Helmet>
         <Navber></Navber>
           <div className="relative overflow-hidden">
           <div className="mx-auto max-w-screen-md py-12 px-4 sm:px-6 md:max-w-screen-xl md:py-20 lg:py-32 md:px-8">

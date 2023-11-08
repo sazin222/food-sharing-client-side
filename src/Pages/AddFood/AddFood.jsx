@@ -4,6 +4,7 @@ import Navber from "../Home/Navber";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 
 const AddFood = () => {
@@ -57,7 +58,10 @@ const AddFood = () => {
 
 
     return (
-        <div>
+        <div> 
+          <Helmet>
+            <title>Add Food</title>
+          </Helmet>
             <Navber></Navber>
             <div>
 <div className="overflow-hidden">

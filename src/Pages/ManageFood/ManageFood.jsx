@@ -4,6 +4,7 @@ import Navber from "../Home/Navber";
 import ManageTable from "./ManageTable";
 import Footer from "../Footer/Footer";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const ManageFood = () => {
   const {user} = useAuth()
@@ -21,10 +22,11 @@ const ManageFood = () => {
     
     return (
         <div>
+          <Helmet>
+            <title>Manage My Food</title>
+          </Helmet>
             <Navber></Navber>
-              
-
-                   
+                      
      <div className="relative overflow-hidden">
   <div className="max-w-[85rem] mx-auto px-4 sm:px-3 lg:px-8 py-5 sm:py-10">
     <div className="text-center">

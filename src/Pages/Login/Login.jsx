@@ -3,6 +3,7 @@ import Navber from "../Home/Navber";
 import Swal from "sweetalert2";
 import Footer from "../Footer/Footer";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { Login, googleLogin } = useAuth()
@@ -53,6 +54,9 @@ const Login = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Login Page</title>
+      </Helmet>
       <Navber></Navber>
       <div className="relative overflow-hidden">
         <div className="mx-auto max-w-screen-md py-12 px-4 sm:px-6 md:max-w-screen-xl md:py-20 lg:py-32 md:px-8">

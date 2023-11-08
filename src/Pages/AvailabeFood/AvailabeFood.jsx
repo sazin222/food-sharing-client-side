@@ -3,6 +3,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Navber from "../Home/Navber";
 import FoodCard from "./FoodCard";
 import Footer from "../Footer/Footer";
+import { Helmet } from "react-helmet-async";
 
 
 const AvailabeFood = () => {
@@ -30,6 +31,9 @@ const AvailabeFood = () => {
 
     return (
         <div>
+          <Helmet>
+            <title>Available Food</title>
+          </Helmet>
            <Navber></Navber>
             
      <div className="relative overflow-hidden">

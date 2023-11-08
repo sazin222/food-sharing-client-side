@@ -5,6 +5,7 @@ import ManageSingleFoodDetails from "./ManageSingleFoodDetails";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Footer from "../Footer/Footer";
+import { Helmet } from "react-helmet-async";
 
 const ManageSingleFood = () => {
     const [RequestFoods, setRequestedFoods]=useState([])
@@ -23,7 +24,9 @@ const ManageSingleFood = () => {
     return (
     <div>
         <Navber></Navber>
-
+            <Helmet>
+                <title>Manage Single Food</title>
+            </Helmet>
             <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
                 {
                     RequestFoods.map(RequestFood=> <ManageSingleFoodDetails

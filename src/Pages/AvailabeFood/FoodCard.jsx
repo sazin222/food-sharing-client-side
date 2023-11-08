@@ -1,11 +1,16 @@
 /* eslint-disable react/prop-types */
 
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 
 const FoodCard = ({food}) => {
     return (
+       
        <div>
+        <Helmet>
+        <title>Food details</title>
+        </Helmet>
     <div className="flex h-[90%] flex-col group bg-white border shadow-sm rounded-xl overflow-hidden hover:shadow-lg transition dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]" href="#">
   <div className="relative rounded-t-xl overflow-hidden">
     <img className="w-full h-full mx-auto top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-t-xl" src={food.foodImage} alt="Image Description"/>
