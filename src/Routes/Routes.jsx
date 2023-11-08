@@ -54,7 +54,7 @@ const Routes = createBrowserRouter([
           element: <PrivetRoutes>
             <ManageFoodUpdate></ManageFoodUpdate>
           </PrivetRoutes>,
-           loader:({params})=> fetch(`https://community-food-sharing-server-ten.vercel.app/fooddetails/${params.id}`)
+           loader:({params})=> fetch(`https://community-food-sharing-server-ten.vercel.app/fooddetails/${params.id}`,{credentials:'include'})
           
         },
         {
