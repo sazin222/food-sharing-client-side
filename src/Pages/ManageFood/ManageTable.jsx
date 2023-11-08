@@ -59,7 +59,7 @@ const ManageTable = ({item , foods, setFoods}) => {
                  <button className="btn p-1 rounded bg-green-500 text-white">Edit</button>
                  </Link>
                   <button onClick= {()=>handelDelete(item?._id)} className="btn p-1 bg-red-500 text-white rounded ">Delete</button>
-                 <Link to={`/manageSinglePage/${item._id}`}> 
+                 <Link to={`/managesingle/${item?._id}`}> 
                  <button className="btn p-1 bg-green-500 text-white rounded ">Manage</button>
                  </Link>
                 </div>

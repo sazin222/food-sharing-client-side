@@ -8,7 +8,6 @@ import useAuth from "../../hooks/useAuth";
 const ManageFood = () => {
   const {user} = useAuth()
     const [foods, setFoods]= useState([])
-    console.log(foods);
     const axiosSecure= useAxiosSecure()
     const URL = `/managefoods?email=${user?.email}`;
     useEffect(() => {

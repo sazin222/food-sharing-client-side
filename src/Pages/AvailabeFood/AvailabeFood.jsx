@@ -5,9 +5,6 @@ import FoodCard from "./FoodCard";
 import Footer from "../Footer/Footer";
 
 
-
-
-
 const AvailabeFood = () => {
     const [foods, setFoods]= useState([])
     const axiosSecure= useAxiosSecure()
@@ -31,8 +28,6 @@ const AvailabeFood = () => {
 
     }, [URL,axiosSecure]); 
 
-
-    
     return (
         <div>
            <Navber></Navber>

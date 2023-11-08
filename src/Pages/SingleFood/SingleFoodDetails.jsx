@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 const SingleFoodDetails = () => {
   const axiosSecure= useAxiosSecure()
   const [currentDate, setCurrentDate] = useState(
-    new Date().toISOString().substr(0, 10)
+    new Date().toISOString().substring(0, 10)
   );
   const { user } = useContext(AuthContext);
   const SingleFood = useLoaderData();
@@ -40,7 +40,9 @@ const SingleFoodDetails = () => {
       pickupLocation,
       expireddate,
       additionalNotes,
-      donationMoney
+      donationMoney,
+      resqester: user?.displayName,
+      requesterpic: user?.photoURL
   };
    
 
@@ -61,11 +63,6 @@ const SingleFoodDetails = () => {
   .catch(function (error) {
     console.log(error);
   });
-
-  
-  
-
-
 
 
   }

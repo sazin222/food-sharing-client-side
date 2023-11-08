@@ -24,13 +24,12 @@ const MyfoodRequest = () => {
     if(foods.length>0){
       return (
         <div>
-           <Navber></Navber>
-            <div className="text-center my-8">
-    <h1 className="text-3xl sm:text-4xl font-bold text-green-600 dark:text-gray-200" style={{backgroundClip:'text',  WebkitTextFillColor: 'transparent',  background: 'linear-gradient(to right, 	#90EE90,  #056608 )',WebkitBackgroundClip:'text',}}>
+        <Navber></Navber>
+        <div className="text-center my-8">
+      <h1 className="text-3xl sm:text-4xl font-bold text-green-600 dark:text-gray-200" style={{backgroundClip:'text',  WebkitTextFillColor: 'transparent',  background: 'linear-gradient(to right, 	#90EE90,  #056608 )',WebkitBackgroundClip:'text',}}>
        Your Requested Products
       </h1>
     </div>
-
             <div className="my-4 grid grid-cols-1 lg:grid-cols-2 ">
                 {foods.map(food=> <SingleRequestfood 
                 key={food._id}
