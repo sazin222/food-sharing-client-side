@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Navber from "../Home/Navber";
 import Footer from "../Footer/Footer";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const ManageFoodUpdate = () => {
@@ -59,6 +60,9 @@ const ManageFoodUpdate = () => {
 
     return (
         <div>
+          <Helmet>
+            <title>Food Update</title>
+          </Helmet>
             <Navber></Navber>
            <div>
 <div className="overflow-hidden">

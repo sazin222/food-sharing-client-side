@@ -22,6 +22,9 @@ const ManageSingleFood = () => {
   }, [user?.email]);
   return (
     <div>
+      <Helmet>
+        <title>Manage SIngle Food</title>
+      </Helmet>
       <Navber></Navber>
       <Helmet>
         <title>Manage Single Food</title>
@@ -31,6 +34,8 @@ const ManageSingleFood = () => {
           <ManageSingleFoodDetails
             key={RequestFood._id}
             RequestFood={RequestFood}
+            RequestFoods={RequestFoods}
+            setRequestedFoods={setRequestedFoods}
           ></ManageSingleFoodDetails>
         ))}
       </div>

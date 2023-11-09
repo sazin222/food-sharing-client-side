@@ -1,5 +1,33 @@
+import Swal from "sweetalert2";
+
 /* eslint-disable react/prop-types */
-const ManageSingleFoodDetails = ({ RequestFood }) => {
+const ManageSingleFoodDetails = ({ RequestFood , RequestFoods,setRequestedFoods }) => {
+  
+  const handelDeliver= foodName =>{
+    console.log(foodName);
+    
+      fetch(`https://community-food-sharing-server-ten.vercel.app/foodDelivery/${foodName}`,{
+         method: 'DELETE'
+      })
+      .then(res=> res.json())
+      .then(data=>{
+         console.log(data);
+         if(data.deletedCount>0){
+          Swal.fire({
+            title: 'Success',
+            text: 'Food Delivery successfully',
+            icon: 'Success',
+            confirmButtonText: 'Cool'
+          })
+
+         const remaining = RequestFoods.filter(pro=> pro.foodName !== foodName) 
+         setRequestedFoods(remaining)
+         }
+      })
+
+     }
+   
+  
   return (
     <div className=" mt-6">
       <div
@@ -39,6 +67,8 @@ const ManageSingleFoodDetails = ({ RequestFood }) => {
         </div>
 
         <button
+        onClick={()=>handelDeliver(RequestFood.
+          foodName)}
           type="button"
           className="py-3 text-center px-4 inline-flex justify-center items-center gap-2 rounded-md bg-green-100 border border-transparent font-semibold text-green-500 hover:text-white hover:bg-green-100 focus:outline-none focus:ring-2 ring-offset-white focus:ring-green-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
         >

@@ -5,6 +5,7 @@ import SingleRequestfood from "./SingleRequestfood";
 import Footer from "../Footer/Footer";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 
 const MyfoodRequest = () => {
@@ -24,6 +25,9 @@ const MyfoodRequest = () => {
     if(foods.length>0){
       return (
         <div>
+          <Helmet>
+            <title>My Food Request</title>
+          </Helmet>
         <Navber></Navber>
         <div className="text-center my-8">
       <h1 className="text-3xl sm:text-4xl font-bold text-green-600 dark:text-gray-200" style={{backgroundClip:'text',  WebkitTextFillColor: 'transparent',  background: 'linear-gradient(to right, 	#90EE90,  #056608 )',WebkitBackgroundClip:'text',}}>

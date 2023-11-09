@@ -22,6 +22,7 @@ const AddFood = () => {
     const email= user?.email
     const donatorName= user?.displayName
     const donatorImage= user?.photoURL
+    
 
     const AddedFood = {
       foodName,
@@ -33,6 +34,7 @@ const AddFood = () => {
       email,
       donatorName, 
       donatorImage, 
+      status: "available"
   };
     
   axiosSecure.post('/food',AddedFood )

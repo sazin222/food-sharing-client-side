@@ -9,7 +9,7 @@ const FoodCard = ({food}) => {
        
        <div>
         <Helmet>
-        <title>Food details</title>
+        <title>Available Food</title>
         </Helmet>
     <div className="flex h-[90%] flex-col group bg-white border shadow-sm rounded-xl overflow-hidden hover:shadow-lg transition dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]" href="#">
   <div className="relative rounded-t-xl overflow-hidden">
